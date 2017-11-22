@@ -3,6 +3,9 @@ options(scipen = 99999999)
 
 source('./inst/magnus/load_data.R')
 
+library(favorita)
+load_fv(fv)
+
 str(data_list[["train"]])
 summary(data_list[["train"]])
 
