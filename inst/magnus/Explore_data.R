@@ -38,7 +38,7 @@ str(X2)
 
 head(X2)
 
-alpha <- 0.0
+alpha <- 0.95
 set.seed(6848684)
 EN_CV <- cv.glmnet(X2, y, intercept = TRUE, alpha = alpha)
 plot(EN_CV)
