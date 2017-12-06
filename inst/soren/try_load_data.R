@@ -13,3 +13,4 @@ saveRDS(fv,file="../favorita_grocery_sales_forecasting/data/fv.rds")
 
 #laod like this in other scripts
 #fv = readRDS(file="../favorita_grocery_sales_forecasting/data/fv.rds")
+fv$stores$city
