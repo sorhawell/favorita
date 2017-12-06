@@ -1,10 +1,11 @@
 rm(list=ls())
 options(scipen = 99999999)
 
-source('./inst/magnus/load_data.R')
-
+library(fasttime)
 library(favorita)
-load_fv(fv)
+load_fv(file = '../favorita_grocery_sales_forecasting/data/fv.rds')
+
+data_list[["train"]]$date <- fastPOSIXct(data_list[["train"]]$date)
 
 str(data_list[["train"]])
 summary(data_list[["train"]])
