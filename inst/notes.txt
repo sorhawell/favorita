@@ -1,0 +1,20 @@
+time-trend
+	running trend
+	holiday calendar
+	is this product new?
+	oil prices
+	
+geographic effects store/state/city effects
+
+
+
+
+
+løse noter
+
+item_nbr "208530" ku godt være juletræer. bliver solgt hæftigt omkring jul. Ellers ikke så meget.
+
+
+
+Equador har tre regioner med hver deres ferie kalender, se kommentar fra Elio til kernel "shopping for insights" : https://www.kaggle.com/headsortails/shopping-for-insights-favorita-eda
+
