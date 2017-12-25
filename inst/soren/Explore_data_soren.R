@@ -32,14 +32,44 @@ rf = randomForest(X,y)
 rf
 
 
+View(fv$train[1:1000,])
+fv$train$store_nbr[1:422,]
 
 
+fv25 = fv$train[fv$train$store_nbr==25,]
+fv25$date2 = fastPOSIXct(fv25$date)
+item.uni = unique(fv25$item_nbr)
+out = by(fv25[,],fv25$date,function(df) {
+  x = tapply(df$unit_sales,df$item_nbr,sum)
+  reportedSales = rep(0,length(item.uni))
+  names(reportedSales) = item.uni
+  reportedSales[names(x)] = x
+  reportedSales
+}) 
+out = (do.call(rbind,out))
+subTotals = apply(out,2,sum)
+dim(out)
+out = out[,sort(subTotals,dec=T,ind=T)$ix]
 
-diff_time <- difftime(Sys.time(), data_list[["train"]]$date)
+View(out[,1:10])
+Dates = fastPOSIXct(rownames(out))
+years
 
-hist(data_list[["train"]]$id, col = 8)
-plot(data_list[["train"]]$date[sample(1:length(data_list[["train"]]$date),10000)])
-hist(as.numeric(diff_time), col = 8)
-hist(data_list[["train"]]$store_nbr, col = 8)
+library(forestFloor)
+for(i in 10:1) {
+  plot(yday(fastPOSIXct(rownames(out))),out[,i],main=i,col=fcol(year(Dates)))
+}
 
-write.table(1:10, './.')
+fastPOSIXct(rownames(out))[sort(out[,1],dec=T,ind=T)$ix][1:100]
+
+View(fv$holidays_events)
+View(out[,1:100])
+
+sum(out[[1]])
+View(data.frame(
+  names(out[[1]]),
+  unname(out[[1]])
+))
+
+hist()
+
